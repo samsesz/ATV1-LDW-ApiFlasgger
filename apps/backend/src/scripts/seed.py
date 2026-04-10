@@ -33,16 +33,16 @@ DRAGONS = [
 HOUSES = [
     {
         "id": 1,
-        "lesson_id": 1,
-        "question": "O que é Python?",
+        "title": "Stark",
+        "description": "O inverno está chegando.",
     },
 ]
 
 SWORDS = [
     {
         "id": 1,
-        "title": "Python Fundamentos",
-        "description": "Aprenda o básico de Python",
+        "title": "Neddle",
+        "description": "Espada de arya stark",
     },
 ]
 

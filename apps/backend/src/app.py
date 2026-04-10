@@ -14,7 +14,11 @@ load_dotenv()
 
 def create_app():
     app = Flask(__name__)
+    from database import init_db
     init_db(app)
+
+    db_url = os.getenv('DATABASE_URL', '')
+    env_label = 'Supabase' if 'supbase' in db_url else 'Local (Docker)'
 
     swagger_template = {
         "swagger": "2.0",
