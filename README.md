@@ -14,3 +14,6 @@ Após configurar o PYTHONPATH, iniciar a aplicação:
 
 ```powershell
 uv run flask --app app run
+
+
+Sinceramente não sei como, mas só roda com essa configuração
