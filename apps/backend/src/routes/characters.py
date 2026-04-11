@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from ..database import db
-from ..models import Characters
-from ..schemas.characters_schema import CharactersSchema
+from database import db
+from models import Characters
+from schemas.characters_schema import CharactersSchema
 from pydantic import ValidationError
 
 characters_bp = Blueprint('characters', __name__, url_prefix='/characters')

@@ -2,18 +2,18 @@ from flask import Flask
 from flasgger import Swagger
 import os
 from dotenv import load_dotenv
-from .database import init_db, db
 
 # SCHEMAS
-from .schemas.characters_schema import CharactersSchema
-from .schemas.dragons_schema import DragonsSchema
-from .schemas.houses_schema import HousesSchema
-from .schemas.swords_schema import SwordsSchema
+from schemas.characters_schema import CharactersSchema
+from schemas.dragons_schema import DragonsSchema
+from schemas.houses_schema import HousesSchema
+from schemas.swords_schema import SwordsSchema
 
 load_dotenv()
 
 def create_app():
     app = Flask(__name__)
+
     from database import init_db
     init_db(app)
 
@@ -41,15 +41,15 @@ def create_app():
 
     Swagger(app, template=swagger_template)
 
-    from .routes.characters import characters_bp
-    from .routes.dragons import dragons_bp
-    from .routes.houses import houses_bp
-    from .routes.swords import swords_bp
+    from routes.characters import characters_bp
+    from routes.dragons import dragons_bp
+    from routes.houses import houses_bp
+    from routes.swords import swords_bp
 
-    app.register_blueprint(characters_bp)
-    app.register_blueprint(dragons_bp)
-    app.register_blueprint(houses_bp)
-    app.register_blueprint(swords_bp)
+    app.register_blueprint(characters_bp, url_prefix='/api/characters')
+    app.register_blueprint(dragons_bp, url_prefix='/api/dragons')
+    app.register_blueprint(houses_bp, url_prefix='/api/houses')
+    app.register_blueprint(swords_bp, url_prefix='/api/swords')
 
     return app
 

@@ -11,7 +11,7 @@ load_dotenv()
 
 from app import create_app
 from database import db
-from models import characters, dragons, houses, swords
+from models import Characters, Dragons, Houses, Swords
 
 
 CHARACTERS = [
@@ -26,7 +26,7 @@ DRAGONS = [
     {
         "id": 1,
         "title": "Caraxes",
-        "description": " Protegido de Ned Stark, Herdeiro das ilhas de ferro",
+        "description": "Dragão de Daemon Targaryen",
     },
 ]
 
@@ -52,26 +52,26 @@ def seed():
 
     with app.app_context():
         # Verifica se já existem dados
-        if characters.query.first():
+        if Characters.query.first():
             print("Banco já possui dados. Pulando seed.")
             return
 
         print("Populando banco de dados...")
 
         for c in CHARACTERS:
-            db.session.add(characters(**c))
+            db.session.add(Characters(**c))
         print(f"  {len(CHARACTERS)} personagens inseridos")
 
         for d in DRAGONS:
-            db.session.add(dragons(**d))
+            db.session.add(Dragons(**d))
         print(f"  {len(DRAGONS)} dragões inseridos")
 
         for h in HOUSES:
-            db.session.add(houses(**h))
+            db.session.add(Houses(**h))
         print(f"  {len(HOUSES)} casas inseridas")
 
         for s in SWORDS:
-            db.session.add(swords(**s))
+            db.session.add(Swords(**s))
         print(f"  {len(SWORDS)} espadas inseridas")
 
         db.session.commit()

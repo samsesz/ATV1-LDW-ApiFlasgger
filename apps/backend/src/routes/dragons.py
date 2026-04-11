@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify
-from ..database import db
-from ..models import Dragons
-from ..schemas.dragons_schema import DragonsSchema
+from database import db
+from models import Dragons
+from schemas.dragons_schema import DragonsSchema
 from pydantic import ValidationError
 
 dragons_bp = Blueprint('dragons', __name__, url_prefix='/dragons')
@@ -12,7 +12,7 @@ def get_all():
     Lista todos os dragões
     ---
     tags:
-      - Dragões
+      - Dragons
     responses:
       200:
         description: OK
